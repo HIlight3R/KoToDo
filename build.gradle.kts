@@ -1,7 +1,8 @@
 plugins {
     application
-    kotlin("jvm") version "2.0.21"
-    id("com.google.devtools.ksp") version "2.0.21-1.0.25"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.ktor)
+    alias(libs.plugins.ksp)
 }
 
 group = "io.github.hilight3r"
@@ -13,35 +14,32 @@ repositories {
     maven(uri("https://jitpack.io"))
 }
 
-val coroutinesVersion: String by project
-val koinVersion: String by project
-val koinAnnotationsVersion: String by project
-val ktorVersion: String by project
-val telegramBotVersion: String by project
-val exposedVersion: String by project
-
 dependencies {
-    testImplementation(kotlin("test"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-    implementation("io.insert-koin:koin-core:$koinVersion")
-    implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-server-netty-jvm:$ktorVersion")
-    implementation("io.insert-koin:koin-annotations:$koinAnnotationsVersion")
-    ksp("io.insert-koin:koin-ksp-compiler:$koinAnnotationsVersion")
-    implementation("com.h2database:h2:2.3.232")
-    implementation("io.github.dehuckakpyt.telegrambot:telegram-bot-core:$telegramBotVersion")
-    implementation("io.github.dehuckakpyt.telegrambot:telegram-bot-ktor:$telegramBotVersion")
-    implementation("io.github.dehuckakpyt.telegrambot:telegram-bot-source-exposed:$telegramBotVersion")
-    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-crypt:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-json:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-money:$exposedVersion")
-    implementation("com.github.kibertoad:ktor-scheduler:2.0.0")
-    implementation("org.jobrunr:jobrunr:6.1.1")
-    implementation("com.zaxxer:HikariCP:5.0.1")
+    implementation(libs.ktor.server.core)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.server.content.negotiation)
+    implementation(libs.exposed.core)
+    implementation(libs.exposed.crypt)
+    implementation(libs.exposed.dao)
+    implementation(libs.exposed.jdbc)
+    implementation(libs.exposed.kotlin.datetime)
+    implementation(libs.exposed.json)
+    implementation(libs.exposed.money)
+    implementation(libs.h2)
+    implementation(libs.hikari.cp)
+    implementation(libs.koin.annotations)
+    ksp(libs.koin.ksp.compiler)
+    implementation(libs.telegram.bot.core)
+    implementation(libs.telegram.bot.ktor)
+    implementation(libs.telegram.bot.source.exposed)
+    implementation(libs.ktor.server.task.scheduling.core)
+    implementation(libs.ktor.server.task.scheduling.jdbc)
+    implementation(libs.koin.ktor)
+    implementation(libs.koin.logger.slf4j)
+    implementation(libs.ktor.server.netty)
+    implementation(libs.logback.classic)
+    testImplementation(libs.ktor.server.test.host)
+    testImplementation(libs.kotlin.test.junit)
 }
 
 sourceSets.main {
@@ -66,8 +64,8 @@ application {
 
 tasks.withType<JavaExec> {
     file(".env").readLines().forEach {
-        if (!it.isEmpty() && !it.startsWith("#")) {
-            val (key, value) = it.split("=")
+        if (it.isNotEmpty() && !it.startsWith("#")) {
+            val (key, value) = it.split("=", limit = 2)
             if (System.getenv(key) == null) environment(key, value)
         }
     }

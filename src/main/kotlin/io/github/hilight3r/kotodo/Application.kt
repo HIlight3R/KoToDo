@@ -6,11 +6,11 @@ import io.github.hilight3r.kotodo.plugin.configureJobs
 import io.github.hilight3r.kotodo.plugin.configureTelegramBot
 import io.ktor.server.application.Application
 
-fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
+fun main(args: Array<String>) = io.ktor.server.netty.EngineMain.main(args)
 
 fun Application.module() {
     configureDependencyInjection()
     configureDatabaseConnection()
     configureTelegramBot()
-    configureJobs()
+//    configureJobs()
 }

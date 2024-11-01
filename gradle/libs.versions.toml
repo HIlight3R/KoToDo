@@ -1,0 +1,46 @@
+[versions]
+h2-version = "2.2.224"
+kotlin-version = "2.0.21"
+ktor-version = "2.3.12"
+koin-version = "3.4.1"
+logback-version = "1.4.14"
+exposed-version = "0.55.0"
+telegram-bot-version = "0.11.0"
+scheduling-version = "1.2.10"
+ksp-version = "2.0.21-1.0.25"
+koin-annotations-version = "1.2.2"
+hikari-cp-version = "6.0.0"
+
+[libraries]
+ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor-version" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm", version.ref = "ktor-version" }
+ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor-version" }
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed-version" }
+exposed-crypt = { module = "org.jetbrains.exposed:exposed-crypt", version.ref = "exposed-version" }
+exposed-dao = { module = "org.jetbrains.exposed:exposed-dao", version.ref = "exposed-version" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed-version" }
+exposed-kotlin-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", version.ref = "exposed-version" }
+exposed-json = { module = "org.jetbrains.exposed:exposed-json", version.ref = "exposed-version" }
+exposed-money = { module = "org.jetbrains.exposed:exposed-money", version.ref = "exposed-version" }
+h2 = { module = "com.h2database:h2", version.ref = "h2-version" }
+hikari-cp = { module = "com.zaxxer:HikariCP", version.ref = "hikari-cp-version" }
+ktor-server-task-scheduling-core = { module = "io.github.flaxoos:ktor-server-task-scheduling-core-jvm", version.ref = "scheduling-version" }
+ktor-server-task-scheduling-redis = { module = "io.github.flaxoos:ktor-server-task-scheduling-redis-jvm", version.ref = "scheduling-version" }
+ktor-server-task-scheduling-mongodb = { module = "io.github.flaxoos:ktor-server-task-scheduling-mongodb-jvm", version.ref = "scheduling-version" }
+ktor-server-task-scheduling-jdbc = { module = "io.github.flaxoos:ktor-server-task-scheduling-jdbc-jvm", version.ref = "scheduling-version" }
+koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin-version" }
+telegram-bot-core = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-core", version.ref = "telegram-bot-version"}
+telegram-bot-ktor = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-ktor", version.ref = "telegram-bot-version"}
+telegram-bot-source-exposed = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-source-exposed", version.ref = "telegram-bot-version"}
+koin-logger-slf4j = { module = "io.insert-koin:koin-logger-slf4j", version.ref = "koin-version" }
+koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin-annotations-version" }
+koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin-annotations-version" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor-version" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-version" }
+ktor-server-test-host = { module = "io.ktor:ktor-server-test-host-jvm", version.ref = "ktor-version" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin-version" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor-version" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
