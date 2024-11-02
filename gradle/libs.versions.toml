@@ -9,6 +9,7 @@ telegram-bot-version = "0.11.0"
 ksp-version = "2.0.21-1.0.25"
 koin-annotations-version = "1.2.2"
 hikari-cp-version = "5.0.1"
+db-scheduler-version = "14.1.0"
 
 [libraries]
 ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor-version" }
@@ -24,15 +25,16 @@ exposed-money = { module = "org.jetbrains.exposed:exposed-money", version.ref = 
 h2 = { module = "com.h2database:h2", version.ref = "h2-version" }
 hikari-cp = { module = "com.zaxxer:HikariCP", version.ref = "hikari-cp-version" }
 koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin-version" }
-telegram-bot-core = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-core", version.ref = "telegram-bot-version"}
-telegram-bot-ktor = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-ktor", version.ref = "telegram-bot-version"}
-telegram-bot-source-exposed = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-source-exposed", version.ref = "telegram-bot-version"}
+telegram-bot-core = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-core", version.ref = "telegram-bot-version" }
+telegram-bot-ktor = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-ktor", version.ref = "telegram-bot-version" }
+telegram-bot-source-exposed = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-source-exposed", version.ref = "telegram-bot-version" }
 koin-logger-slf4j = { module = "io.insert-koin:koin-logger-slf4j", version.ref = "koin-version" }
 koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin-annotations-version" }
 koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin-annotations-version" }
 ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor-version" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-version" }
 ktor-server-test-host = { module = "io.ktor:ktor-server-test-host-jvm", version.ref = "ktor-version" }
+db-scheduler = { module = "com.github.kagkarlsson:db-scheduler", version.ref = "db-scheduler-version" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin-version" }
 
 [plugins]
