@@ -1,8 +1,8 @@
 plugins {
     application
     alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.ktor)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.ktor)
 }
 
 group = "io.github.hilight3r"
@@ -32,8 +32,11 @@ dependencies {
     implementation(libs.telegram.bot.core)
     implementation(libs.telegram.bot.ktor)
     implementation(libs.telegram.bot.source.exposed)
-    implementation(libs.ktor.server.task.scheduling.core)
-    implementation(libs.ktor.server.task.scheduling.jdbc)
+//    implementation(libs.ktor.server.task.scheduling.core)
+//    implementation(libs.ktor.server.task.scheduling.jdbc)
+//    implementation(libs.ktor.client.apache)
+    implementation("io.github.osoykan:db-scheduler-ui-ktor:0.0.5")
+    implementation("com.github.kagkarlsson:db-scheduler:14.1.0")
     implementation(libs.koin.ktor)
     implementation(libs.koin.logger.slf4j)
     implementation(libs.ktor.server.netty)
@@ -51,7 +54,7 @@ tasks.test {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(17)
 }
 
 ksp {

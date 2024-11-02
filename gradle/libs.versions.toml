@@ -6,10 +6,9 @@ koin-version = "3.4.1"
 logback-version = "1.4.14"
 exposed-version = "0.55.0"
 telegram-bot-version = "0.11.0"
-scheduling-version = "1.2.10"
 ksp-version = "2.0.21-1.0.25"
 koin-annotations-version = "1.2.2"
-hikari-cp-version = "6.0.0"
+hikari-cp-version = "5.0.1"
 
 [libraries]
 ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor-version" }
@@ -24,10 +23,6 @@ exposed-json = { module = "org.jetbrains.exposed:exposed-json", version.ref = "e
 exposed-money = { module = "org.jetbrains.exposed:exposed-money", version.ref = "exposed-version" }
 h2 = { module = "com.h2database:h2", version.ref = "h2-version" }
 hikari-cp = { module = "com.zaxxer:HikariCP", version.ref = "hikari-cp-version" }
-ktor-server-task-scheduling-core = { module = "io.github.flaxoos:ktor-server-task-scheduling-core-jvm", version.ref = "scheduling-version" }
-ktor-server-task-scheduling-redis = { module = "io.github.flaxoos:ktor-server-task-scheduling-redis-jvm", version.ref = "scheduling-version" }
-ktor-server-task-scheduling-mongodb = { module = "io.github.flaxoos:ktor-server-task-scheduling-mongodb-jvm", version.ref = "scheduling-version" }
-ktor-server-task-scheduling-jdbc = { module = "io.github.flaxoos:ktor-server-task-scheduling-jdbc-jvm", version.ref = "scheduling-version" }
 koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin-version" }
 telegram-bot-core = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-core", version.ref = "telegram-bot-version"}
 telegram-bot-ktor = { module = "io.github.dehuckakpyt.telegrambot:telegram-bot-ktor", version.ref = "telegram-bot-version"}

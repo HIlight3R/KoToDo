@@ -1,35 +1,24 @@
 package io.github.hilight3r.kotodo.plugin
 
-import io.github.flaxoos.ktor.server.plugins.taskscheduling.TaskScheduling
-import io.github.flaxoos.ktor.server.plugins.taskscheduling.managers.lock.database.DefaultTaskLockTable
-import io.github.flaxoos.ktor.server.plugins.taskscheduling.managers.lock.database.jdbc
+import com.github.kagkarlsson.scheduler.Scheduler
+import com.github.kagkarlsson.scheduler.task.helper.Tasks
+import com.github.kagkarlsson.scheduler.task.schedule.FixedDelay
 import io.ktor.server.application.*
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.transactions.transaction
+import org.koin.ktor.ext.get
 import org.koin.ktor.ext.inject
 import javax.sql.DataSource
 
+val Application.scheduler: Scheduler
+    get() = Scheduler
+        .create(get<DataSource>())
+        .startTasks(
+            Tasks.recurring("printer", FixedDelay.ofSeconds(5))
+                .execute { _, _ -> run { log.info("Hello, world!") } }
+        )
+        .registerShutdownHook()
+        .build()
+
 fun Application.configureJobs() {
-    install(TaskScheduling) {
-        jdbc {
-            val dataSource by inject<DataSource>()
-            database = Database.connect(dataSource)
-        }.also {
-            transaction {
-                SchemaUtils.create(DefaultTaskLockTable)
-            }
-        }
-        task {
-            name = "test"
-            kronSchedule = {
-                seconds {
-                    from(0) every 5
-                }
-            }
-            task = {
-                log.info("My task is running: $it")
-            }
-        }
-    }
+    val scheduler by inject<Scheduler>()
+    scheduler.start()
 }
